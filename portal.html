@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Series Portal</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 40px 0 20px;
+      color: #00bcd4;
+    }
+
+    .poster-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 30px;
+      padding: 40px;
+      width: 100%;
+      max-width: 1000px;
+      box-sizing: border-box;
+    }
+
+    .poster-link {
+      display: block;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 25px rgba(0, 188, 212, 0.4);
+    }
+
+    .poster-link:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px rgba(0, 188, 212, 0.8);
+    }
+
+    .poster-link img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+    }
+
+    footer {
+      background: #1a1a1a;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #ccc;
+      width: 100%;
+      margin-top: auto;
+    }
+
+    footer a {
+      color: #00bcd4;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Choose Series</h1>
+<p style="color: #ccc; font-size: 0.95rem; margin-top: -10px;">
+  (Work in progress — some shows might not be fully available yet.)
+</p>
+  <div class="poster-grid">
+    <a href="ninjago.html" class="poster-link">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/c/cd/Crystalized_season_15_poster.jpg" alt="Ninjago: Masters of Spinjitzu">
+    </a>
+    <a href="ninjagodr.html" class="poster-link">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/e/e0/DRAGONS_RISING_S3_POSTER.jpg" alt="Ninjago: Dragons Rising">
+    </a>
+    <a href="dz.html" class="poster-link">
+      <img src="https://static.wikia.nocookie.net/dreamzzz-lego/images/8/83/Season_3_Enter_the_Cyber_Game_Poster.jpg" alt="LEGO DREAMZzz">
+    </a>
+    <a href="ch.html" class="poster-link">
+      <img src="https://image.tmdb.org/t/p/original/bkq3jXxyXVIojL0oxvLUGUEz9y1.jpg" alt="LEGO Legends of Chima">
+    </a>
+    <a href="nexo.html" class="poster-link">
+      <img src="https://image.tmdb.org/t/p/original/d0e5dJ2FQhlwEhFX4cB0ijp5SMd.jpg" alt="LEGO NEXO Knights">
+    </a>
+  </div>
+
+  <footer>
+    Join our community on 
+    <a href="https://discord.gg/legoninjago" target="_blank">Discord</a>!
+  </footer>
+
+</body>
+</html>
