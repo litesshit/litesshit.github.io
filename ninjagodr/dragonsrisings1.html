@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dragons Rising S1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Plyr CSS -->
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .video-card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      overflow: hidden;
+      padding: 15px;
+      transition: transform 0.2s ease;
+    }
+
+    .video-card:hover {
+      transform: scale(1.02);
+    }
+
+    .video-title {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #00bcd4;
+    }
+
+    .plyr__video-embed iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div style="background: #ff9800; color: #000; text-align: center; padding: 15px; font-weight: bold; font-size: 1.1rem;">
+  ⚠️ Episodes require a VPN to watch. Connect to either Australia, India, Malaysia, New Zealand, Phillipines or Singapore.
+</div>
+
+<div class="grid" id="videoGrid"></div>
+
+<!-- Plyr JS -->
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+
+<script>
+  const videos = [
+    { title: "Episode 1", youtubeId: "HU1vnBDGLok" },
+    { title: "Episode 2", youtubeId: "wjOIGYfPswU" },
+    { title: "Episode 3", youtubeId: "D4wUpRwbyJU" },
+    { title: "Episode 4", youtubeId: "PZ348R76TlI" },
+    { title: "Episode 5", youtubeId: "QvHF4kkH6B4" },
+    { title: "Episode 6", youtubeId: "a-PcZYfDxcU" },
+    { title: "Episode 7", youtubeId: "q3LSIZ51eWg" },
+    { title: "Episode 8", youtubeId: "B-OpRfJyluw" },
+    { title: "Episode 9", youtubeId: "8Wr7VW5Vx6c" },
+    { title: "Episode 10", youtubeId: "UTN6W5OFZEo" },
+    { title: "Episode 11", youtubeId: "CWbPlkMMAfg" },
+    { title: "Episode 12", youtubeId: "tc82g8S-QRs" },
+    { title: "Episode 13", youtubeId: "ESrhinq1paA" },
+    { title: "Episode 14", youtubeId: "qcPYl9-RDb0" },
+    { title: "Episode 15", youtubeId: "jpsr02BG-TQ" },
+    { title: "Episode 16", youtubeId: "d3VoOHvFfwQ" },
+    { title: "Episode 17", youtubeId: "BVsOe9f4L2s" },
+    { title: "Episode 18", youtubeId: "Fid0L7Lb7Rk" },
+    { title: "Episode 19", youtubeId: "GDKGRvUofCQ" },
+    { title: "Episode 20", youtubeId: "dR-bHQ5g9H0" }
+  ];
+
+  const grid = document.getElementById('videoGrid');
+
+  videos.forEach((videoData, index) => {
+    const container = document.createElement('div');
+    container.className = 'video-card';
+
+    const title = document.createElement('h3');
+    title.className = 'video-title';
+    title.textContent = videoData.title;
+
+    const playerWrapper = document.createElement('div');
+    playerWrapper.className = 'plyr__video-embed';
+    playerWrapper.innerHTML = `
+      <iframe
+        id="player-${index}"
+        src="https://www.youtube.com/embed/${videoData.youtubeId}?origin=${location.origin}&iv_load_policy=3&modestbranding=1&rel=0&showinfo=0"
+        allowfullscreen
+        allowtransparency
+        allow="autoplay"
+      ></iframe>
+    `;
+
+    container.appendChild(title);
+    container.appendChild(playerWrapper);
+    grid.appendChild(container);
+
+    new Plyr(playerWrapper, {
+      type: 'youtube',
+      autoplay: false,
+      captions: { active: true, language: 'en' }
+    });
+  });
+</script>
+
+<footer style="background:#1a1a1a; color:#ccc; padding:20px; text-align:center; font-size:0.95rem; margin-top:40px;">
+  Join our community on 
+  <a href="https://discord.gg/DmKPjpMK8g" target="_blank" style="color:#00bcd4; text-decoration:none;">
+    Discord
+  </a>!
+  <br><br>
+  <span id="custom-footer-line">All videos on this page are direct embeds from official links, thus it is not piracy.</span>
+</footer>
+
+</body>
+</html>
