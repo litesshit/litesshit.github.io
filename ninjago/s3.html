@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>S3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Plyr CSS -->
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .video-card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      overflow: hidden;
+      padding: 15px;
+      transition: transform 0.2s ease;
+    }
+
+    .video-card:hover {
+      transform: scale(1.02);
+    }
+
+    .video-title {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #00bcd4;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="grid" id="videoGrid">
+  <!-- Video boxes injected by JavaScript -->
+</div>
+
+<!-- Plyr JS -->
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+<!-- HLS.js -->
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+<script>
+  // Video data config
+  const videos = [
+    {
+      title: "Episode 1",
+      m3u8: "https://cdn1.futuretodayinc.com/files/a8wn4hw/vi/c5/d3/10369177/s10369177.m3u8",
+      vtt: "",
+      poster: "https://cdn1.futuretodayinc.com/files/a8wn4hw/im/d9/2a/7478d09b945cb287836b6e09c6d3de73.jpg"
+    },
+    {
+      title: "Episode 2",
+      m3u8: "https://cdn1.futuretodayinc.com/files/a8wn4hw/vi/dc/c6/10369178/s10369178.m3u8",
+      vtt: "",
+      poster: "https://cdn1.futuretodayinc.com/files/a8wn4hw/im/32/45/dc9653462d4c7b2e02fe9e581ed179ab.jpg"
+    },
+    {
+      title: "Episode 3",
+      m3u8: "https://cdn1.futuretodayinc.com/files/a8wn4hw/vi/db/de/10369179/s10369179.m3u8",
+      vtt: "",
+      poster: "https://cdn1.futuretodayinc.com/files/a8wn4hw/im/92/d0/227f2720454ab757742c979e199b2cb7.jpg"
+    },
+    {
+      title: "Episode 4",
+      m3u8: "https://cdn1.futuretodayinc.com/files/a8wn4hw/vi/e2/ee/10369180/s10369180.m3u8",
+      vtt: "",
+      poster: "https://cdn1.futuretodayinc.com/files/a8wn4hw/im/ad/0b/1bef99bf3afa3cd10f2ec34387011415.jpg"
+    },
+    {
+      title: "Episode 5",
+      m3u8: "https://cdn1.futuretodayinc.com/files/a8wn4hw/vi/82/79/10369181/s10369181.m3u8",
+      vtt: "",
+      poster: "https://cdn1.futuretodayinc.com/files/a8wn4hw/im/df/fd/cc8816879cc65ba0ca7968511efb1389.jpg"
+    },
+    {
+      title: "Episode 6",
+      m3u8: "https://cdn1.futuretodayinc.com/files/a8wn4hw/vi/bd/fd/10369182/s10369182.m3u8",
+      vtt: "",
+      poster: "https://cdn1.futuretodayinc.com/files/a8wn4hw/im/ff/8b/d8065d82d83f42059f197c9376dc795d.jpg"
+    },
+    {
+      title: "Episode 7",
+      m3u8: "https://cdn1.futuretodayinc.com/files/a8wn4hw/vi/5b/8d/10369183/s10369183.m3u8",
+      vtt: "",
+      poster: "https://cdn1.futuretodayinc.com/files/a8wn4hw/im/97/c0/f3ea3dacb6c72ea43b072761261fdcc1.jpg"
+    },
+    {
+      title: "Episode 8",
+      m3u8: "https://cdn1.futuretodayinc.com/files/a8wn4hw/vi/96/09/10369184/s10369184.m3u8",
+      vtt: "",
+      poster: "https://cdn1.futuretodayinc.com/files/a8wn4hw/im/2e/03/bc40b2960f761708bd8371856926ee11.jpg"
+    }
+  ];
+
+  // Render video players
+  const grid = document.getElementById('videoGrid');
+
+  videos.forEach((videoData, index) => {
+    const container = document.createElement('div');
+    container.className = 'video-card';
+
+    const title = document.createElement('h3');
+    title.className = 'video-title';
+    title.textContent = videoData.title;
+
+    const video = document.createElement('video');
+    video.setAttribute('id', 'player-' + index);
+    video.setAttribute('playsinline', '');
+    video.setAttribute('controls', '');
+    video.setAttribute('poster', videoData.poster);
+
+    const track = document.createElement('track');
+    track.setAttribute('kind', 'captions');
+    track.setAttribute('label', 'English');
+    track.setAttribute('src', videoData.vtt);
+    track.setAttribute('srclang', 'en');
+    track.setAttribute('default', '');
+
+    video.appendChild(track);
+    container.appendChild(title);
+    container.appendChild(video);
+    grid.appendChild(container);
+
+    const player = new Plyr(video, {
+      captions: { active: true, update: true, language: 'en' }
+    });
+
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(videoData.m3u8);
+      hls.attachMedia(video);
+      player.on('languagechange', () => {
+        setTimeout(() => {
+          hls.subtitleTrack = player.currentTrack;
+        }, 50);
+      });
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = videoData.m3u8;
+    }
+  });
+</script>
+<footer style="background:#1a1a1a; color:#ccc; padding:20px; text-align:center; font-size:0.95rem; margin-top:40px;">
+  Join our community on 
+  <a href="https://discord.gg/DmKPjpMK8g" target="_blank" style="color:#00bcd4; text-decoration:none;">
+    Discord
+  </a>!
+  <br><br>
+  <span id="custom-footer-line">All videos on this page are direct embeds from official links, thus it is not piracy.</span>
+</footer>
+</body>
+</html>
