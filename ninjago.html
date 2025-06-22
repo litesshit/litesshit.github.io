@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choose Season</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 40px 0 20px;
+      color: #00bcd4;
+    }
+
+    .season-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 30px;
+      padding: 40px;
+      width: 100%;
+      max-width: 1000px;
+      box-sizing: border-box;
+    }
+
+    .season-card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(0, 188, 212, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .season-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px rgba(0, 188, 212, 0.8);
+    }
+
+    .season-card img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .season-label {
+      padding: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #00bcd4;
+      background-color: #1a1a1a;
+      border-top: 1px solid #00bcd4;
+    }
+
+    footer {
+      background: #1a1a1a;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #ccc;
+      width: 100%;
+      margin-top: auto;
+    }
+
+    footer a {
+      color: #00bcd4;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Choose a Season</h1>
+
+  <div class="season-grid">
+    <a href="ninjagopilots.html" class="season-card">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/f/f2/PilotSeason.jpg" alt="Pilots Poster">
+      <div class="season-label">Pilots</div>
+    </a>
+    <a href="season1.html" class="season-card">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/c/c6/Season_1_Rise_of_the_Snakes_Poster.jpg" alt="Season 1 Poster">
+      <div class="season-label">Season 1</div>
+    </a>
+    <a href="season2.html" class="season-card">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/9/9d/LegacyOfTheGreenNinja.jpg" alt="Season 2 Poster">
+      <div class="season-label">Season 2</div>
+    </a>
+    <a href="season3.html" class="season-card">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/c/cc/Ninjago_S03_Poster.jpg" alt="Season 3 Poster">
+      <div class="season-label">Season 3</div>
+    </a>
+    <a href="season4.html" class="season-card">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/6/6a/Tournament_of_Elements_Poster.jpg" alt="Season 4 Poster">
+      <div class="season-label">Season 4</div>
+    </a>
+    <a href="season5.html" class="season-card">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/0/06/Ninjago_S05_Poster.jpg" alt="Season 5 Poster">
+      <div class="season-label">Season 5</div>
+    </a>
+        </a>
+    <a href="season6.html" class="season-card">
+      <img src="https://image.tmdb.org/t/p/original/5Brojciz1Dv4Rxzf7PSA69vXKyn.jpg" alt="Season 6 Poster">
+      <div class="season-label">Season 6</div>
+    </a>
+        </a>
+    <a href="season7.html" class="season-card">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/8/8e/Ninjago_S07_Poster.jpg" alt="Season 7 Poster">
+      <div class="season-label">Season 7</div>
+    </a>
+        </a>
+    <a href="season8.html" class="season-card">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/a/a1/Season_8_Full_Poster.png" alt="Season 8 Poster">
+      <div class="season-label">Season 8</div>
+    </a>
+        </a>
+    <a href="season9.html" class="season-card">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/5/5b/Poster.jpg" alt="Season 9 Poster">
+      <div class="season-label">Season 9</div>
+    </a>
+        </a>
+    <a href="season10.html" class="season-card">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/6/62/MarchOfTheOniPoster.jpg" alt="Season 10 Poster">
+      <div class="season-label">Season 10</div>
+    </a>
+        </a>
+    <a href="season11.html" class="season-card">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/b/b7/SotFSFire%26IcePoster.jpg" alt="Season 11 Poster">
+      <div class="season-label">Season 11</div>
+    </a>
+        </a>
+    <a href="season12.html" class="season-card">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/9/96/Ninjagoseason12poster2.jpeg" alt="Season 12 Poster">
+      <div class="season-label">Season 12</div>
+    </a>
+        </a>
+    <a href="season13.html" class="season-card">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/c/cb/Season13poster.jpeg" alt="Season 13 Poster">
+      <div class="season-label">Season 13</div>
+    </a>
+        </a>
+    <a href="season14.html" class="season-card">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/6/67/Seabound_poster.jpeg" alt="Season 14 Poster">
+      <div class="season-label">Season 14 + Island</div>
+    </a>
+        </a>
+    <a href="season15.html" class="season-card">
+      <img src="https://static.wikia.nocookie.net/ninjago/images/c/cd/Crystalized_season_15_poster.jpg" alt="Season 15 Poster">
+      <div class="season-label">Season 15</div>
+    </a>
+    
+  </div>
+
+  <footer>
+    Join our community on 
+    <a href="https://discord.gg/legoninjago" target="_blank">Discord</a>!
+  </footer>
+
+</body>
+</html>
