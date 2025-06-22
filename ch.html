@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choose Season</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 40px 0 20px;
+      color: #00bcd4;
+    }
+
+    .season-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 30px;
+      padding: 40px;
+      width: 100%;
+      max-width: 1000px;
+      box-sizing: border-box;
+    }
+
+    .season-card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(0, 188, 212, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .season-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 35px rgba(0, 188, 212, 0.8);
+    }
+
+    .season-card img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .season-label {
+      padding: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #00bcd4;
+      background-color: #1a1a1a;
+      border-top: 1px solid #00bcd4;
+    }
+
+    footer {
+      background: #1a1a1a;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #ccc;
+      width: 100%;
+      margin-top: auto;
+    }
+
+    footer a {
+      color: #00bcd4;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Choose a Season</h1>
+
+  <div class="season-grid">
+    <a href="ch/s1.html" class="season-card">
+      <img src="https://m.media-amazon.com/images/I/71QdAoogeuL.jpg" alt="Poster">
+      <div class="season-label">Season 1</div>
+    </a>
+    <a href="ch/s2.html" class="season-card">
+      <img src="https://m.media-amazon.com/images/I/91+3tr9t6xL.jpg" alt="Poster">
+      <div class="season-label">Season 2</div>
+    </a>
+    <a href="ch/s3.html" class="season-card">
+      <img src="https://m.media-amazon.com/images/I/81zr3CpUq7L.jpg" alt="Poster">
+      <div class="season-label">Season 3</div>
+    </a>
+  </div>
+
+  <footer>
+    Join our community on 
+    <a href="https://discord.gg/legoninjago" target="_blank">Discord</a>!
+  </footer>
+
+</body>
+</html>
