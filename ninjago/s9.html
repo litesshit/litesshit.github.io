@@ -153,7 +153,8 @@
     video.setAttribute('playsinline', '');
     video.setAttribute('controls', '');
     video.setAttribute('poster', videoData.poster);
-
+video.setAttribute('crossorigin', 'anonymous');
+    
     const track = document.createElement('track');
     track.setAttribute('kind', 'captions');
     track.setAttribute('label', 'English');
