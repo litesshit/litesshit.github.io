@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Issue 8</title>
+  <style>
+    body {
+      margin: 0; padding: 20px;
+      background-color: #111;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    h1 {
+      color: #00bcd4;
+      margin-bottom: 20px;
+    }
+    #page-img {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0, 188, 212, 0.4);
+    }
+    .nav-buttons {
+      margin-top: 15px;
+    }
+    button {
+      background-color: #00bcd4;
+      border: none;
+      padding: 12px 20px;
+      margin: 0 10px;
+      border-radius: 8px;
+      color: #111;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover:enabled {
+      background-color: #0097a7;
+    }
+    button:disabled {
+      background-color: #004d54;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <h1>DREAMZzz Magazine Issue 8</h1>
+  <img id="page-img" src="" alt="Page Image" loading="lazy" />
+  <div class="nav-buttons">
+    <button id="prev-btn">Previous</button>
+    <button id="next-btn">Next</button>
+  </div>
+
+  <script>
+    const baseUrl = "https://ia800906.us.archive.org/BookReader/BookReaderImages.php?zip=/0/items/lego-dreamzzz-magazine-issue-8/Issue8_jp2.zip&file=Issue8_jp2/Issue8_";
+    const idParam = "&id=lego-dreamzzz-magazine-issue-8";
+    const totalPages = 31; // adjust this as needed
+    let currentPage = 0;
+
+    const imgEl = document.getElementById('page-img');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    // Preload cache for next page image
+    let preloadImg = new Image();
+
+    function getPageUrl(page) {
+      const pageNum = page.toString().padStart(4, '0');
+      return `${baseUrl}${pageNum}.jp2${idParam}`;
+    }
+
+    function showPage(page) {
+      if (page < 0 || page >= totalPages) return;
+      currentPage = page;
+      imgEl.src = getPageUrl(page);
+      updateButtons();
+      preloadNextPage();
+    }
+
+    function preloadNextPage() {
+      const nextPage = currentPage + 1;
+      if (nextPage < totalPages) {
+        preloadImg.src = getPageUrl(nextPage);
+      }
+    }
+
+    function updateButtons() {
+      prevBtn.disabled = currentPage === 0;
+      nextBtn.disabled = currentPage === totalPages - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) showPage(currentPage - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < totalPages - 1) showPage(currentPage + 1);
+    });
+
+    // Initially show the first page
+    showPage(0);
+  </script>
+</body>
+</html>
