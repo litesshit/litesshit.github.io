@@ -10,7 +10,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-E4RK31HYGG');
 </script>
   <!-- Plyr CSS -->
@@ -24,7 +23,6 @@
       background: #111;
       color: #fff;
     }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -33,7 +31,6 @@
       max-width: 1400px;
       margin: 0 auto;
     }
-
     .video-card {
       background: #1a1a1a;
       border-radius: 12px;
@@ -42,18 +39,15 @@
       padding: 15px;
       transition: transform 0.2s ease;
     }
-
     .video-card:hover {
       transform: scale(1.02);
     }
-
     .video-title {
       margin: 0 0 10px;
       font-size: 1.2rem;
       font-weight: 600;
       color: #00bcd4;
     }
-
     video {
       width: 100%;
       height: auto;
@@ -73,7 +67,7 @@
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
 <script>
-  // Video data config
+  // Full video data with episodes 19 and 20 using MP4
   const videos = [
     {
       title: "Episode 1: The Missing",
@@ -183,15 +177,15 @@
       vtt: "",
       poster: "https://image.tmdb.org/t/p/original/j87EFA2OPoNKF3aRQLTkzYypFDN.jpg"
     },
-        {
+    {
       title: "Episode 19: When Doves Cry",
-      m3u8: "",
+      mp4: "https://cdn1.futuretodayinc.com/files/a8wn4hw/vi/6c/9c/656b296b3777a57fc721d15d598ae3fb.mp4",
       vtt: "",
       poster: ""
     },
-        {
+    {
       title: "Episode 20: Chaos Reigns",
-      m3u8: "",
+      mp4: "https://cdn1.futuretodayinc.com/files/a8wn4hw/vi/3e/5d/90029c4d928d6a70c15e6d028d6737d9.mp4",
       vtt: "",
       poster: "https://image.tmdb.org/t/p/original/xSPM4L9zCMRhb6D8ccGftG2cKV.jpg"
     }
@@ -212,17 +206,19 @@
     video.setAttribute('id', 'player-' + index);
     video.setAttribute('playsinline', '');
     video.setAttribute('controls', '');
-    video.setAttribute('poster', videoData.poster);
+    if (videoData.poster) {
+      video.setAttribute('poster', videoData.poster);
+    }
     video.setAttribute('crossorigin', 'anonymous');
     
     const track = document.createElement('track');
     track.setAttribute('kind', 'captions');
     track.setAttribute('label', 'English');
-    track.setAttribute('src', videoData.vtt);
+    track.setAttribute('src', videoData.vtt || '');
     track.setAttribute('srclang', 'en');
     track.setAttribute('default', '');
-
     video.appendChild(track);
+
     container.appendChild(title);
     container.appendChild(video);
     grid.appendChild(container);
@@ -231,17 +227,24 @@
       captions: { active: true, update: true, language: 'en' }
     });
 
-    if (Hls.isSupported()) {
-      const hls = new Hls();
-      hls.loadSource(videoData.m3u8);
-      hls.attachMedia(video);
-      player.on('languagechange', () => {
-        setTimeout(() => {
-          hls.subtitleTrack = player.currentTrack;
-        }, 50);
-      });
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      video.src = videoData.m3u8;
+    // If MP4 provided, use it directly
+    if (videoData.mp4) {
+      video.src = videoData.mp4;
+    }
+    // Otherwise use HLS
+    else if (videoData.m3u8) {
+      if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(videoData.m3u8);
+        hls.attachMedia(video);
+        player.on('languagechange', () => {
+          setTimeout(() => {
+            hls.subtitleTrack = player.currentTrack;
+          }, 50);
+        });
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = videoData.m3u8;
+      }
     }
   });
 </script>
